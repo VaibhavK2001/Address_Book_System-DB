@@ -111,3 +111,27 @@ mysql> SELECT * FROM ADDRESSBOOK;
 +--------+--------+-----------+--------+-------------+--------+-------------+
 1 row in set (0.00 sec)
 
+
+=====================================================================
+	UC 6 - Ability to RETRIVE CONTACTS from table
+=====================================================================
+
+mysql> SELECT * FROM ADDRESSBOOK
+    -> WHERE CITY = 'MUMBAI';
++--------+--------+-----------+--------+-------------+--------+----------------+
+| FNAME  | LNAME  | ADDRESS   | CITY   | STATE       | ZIP    | EMAIL          |
++--------+--------+-----------+--------+-------------+--------+----------------+
+| TUSHAR | JADHAV | GHATKOPAR | MUMBAI | MAHARASHTRA | 400050 | tushar@mail    |
+| RAM    | LAKHAN | GHATKOPAR | MUMBAI | MAHARASHTRA | 400050 | ghatkopar@mail |
++--------+--------+-----------+--------+-------------+--------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ADDRESSBOOK
+    -> WHERE STATE = 'MAHARASHTRA';
++--------+--------+-----------+--------+-------------+--------+----------------+
+| FNAME  | LNAME  | ADDRESS   | CITY   | STATE       | ZIP    | EMAIL          |
++--------+--------+-----------+--------+-------------+--------+----------------+
+| TUSHAR | JADHAV | GHATKOPAR | MUMBAI | MAHARASHTRA | 400050 | tushar@mail    |
+| RAM    | LAKHAN | GHATKOPAR | MUMBAI | MAHARASHTRA | 400050 | ghatkopar@mail |
++--------+--------+-----------+--------+-------------+--------+----------------+
+2 rows in set (0.00 sec)
