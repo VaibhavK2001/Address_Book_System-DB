@@ -135,3 +135,28 @@ mysql> SELECT * FROM ADDRESSBOOK
 | RAM    | LAKHAN | GHATKOPAR | MUMBAI | MAHARASHTRA | 400050 | ghatkopar@mail |
 +--------+--------+-----------+--------+-------------+--------+----------------+
 2 rows in set (0.00 sec)
+
+
+======================================================================================
+	UC 6 - Ability to COUNT of address book by City and State
+======================================================================================
+
+mysql> SELECT COUNT(*)
+    -> FROM ADDRESSBOOK
+    -> GROUP BY CITY;
++----------+
+| COUNT(*) |
++----------+
+|        2 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT(*)
+    -> FROM ADDRESSBOOK;
+    -> GROUP BY STATE;
++----------+
+| COUNT(*) |
++----------+
+|        2 |
++----------+
+1 row in set (0.00 sec)
