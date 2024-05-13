@@ -56,3 +56,21 @@ mysql> desc addressbook;
 | EMAIL   | varchar(50) | YES  |     | NULL    |       |
 +---------+-------------+------+-----+---------+-------+
 7 rows in set (0.02 sec)
+
+=====================================================================
+	UC 3 - Ability to INSERT CONTACTS into table
+=====================================================================
+
+mysql> INSERT INTO ADDRESSBOOK
+    -> VALUES ('VAIBHAV','KUMBHAR','CHEMBUR','MUMBAI','MAHARASHTRA',400071,'vaibhav@mail'),('TUSHAR','PATIL','GHATKOPAR','MUMBAI','MAHARASHTRA',400050,'tushar@mail');
+Query OK, 2 rows affected (0.03 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM ADDRESSBOOK;
++---------+---------+-----------+--------+-------------+--------+--------------+
+| FNAME   | LNAME   | ADDRESS   | CITY   | STATE       | ZIP    | EMAIL        |
++---------+---------+-----------+--------+-------------+--------+--------------+
+| VAIBHAV | KUMBHAR | CHEMBUR   | MUMBAI | MAHARASHTRA | 400071 | vaibhav@mail |
+| TUSHAR  | PATIL   | GHATKOPAR | MUMBAI | MAHARASHTRA | 400050 | tushar@mail  |
++---------+---------+-----------+--------+-------------+--------+--------------+
+2 rows in set (0.01 sec)
