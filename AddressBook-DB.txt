@@ -1,1 +1,58 @@
 ----------------   WELCOME TO ADDRESS BOOK SYSTEM   ----------------
+
+=====================================================================
+	UC1 - Ability to create ADDRESSBOOK Service database
+=====================================================================
+
+mysql> CREATE DATABASE ADDRESSBOOK_SERVICE;
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SHOW DATABASES;
++---------------------+
+| Database            |
++---------------------+
+| addressbook_service |
+| information_schema  |
+| mysql               |
+| payroll_service     |
+| performance_schema  |
+| sys                 |
++---------------------+
+6 rows in set (0.00 sec)
+
+=====================================================================
+	UC2 - Ability to create ADDRESSBOOK TABLE in database
+=====================================================================
+
+mysql> CREATE TABLE ADDRESSBOOK
+    -> (
+    -> FNAME VARCHAR(50),
+    -> LNAME VARCHAR(50),
+    -> ADDRESS VARCHAR(50),
+    -> CITY VARCHAR(50),
+    -> STATE VARCHAR(50),
+    -> ZIP INT,
+    -> EMAIL VARCHAR(50));
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> SHOW TABLES;
++-------------------------------+
+| Tables_in_addressbook_service |
++-------------------------------+
+| addressbook                   |
++-------------------------------+
+1 row in set (0.01 sec)
+
+mysql> desc addressbook;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| FNAME   | varchar(50) | YES  |     | NULL    |       |
+| LNAME   | varchar(50) | YES  |     | NULL    |       |
+| ADDRESS | varchar(50) | YES  |     | NULL    |       |
+| CITY    | varchar(50) | YES  |     | NULL    |       |
+| STATE   | varchar(50) | YES  |     | NULL    |       |
+| ZIP     | int         | YES  |     | NULL    |       |
+| EMAIL   | varchar(50) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+7 rows in set (0.02 sec)
