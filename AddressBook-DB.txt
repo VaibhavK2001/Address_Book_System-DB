@@ -93,3 +93,21 @@ mysql> SELECT * FROM ADDRESSBOOK;
 | TUSHAR  | JADHAV  | GHATKOPAR | MUMBAI | MAHARASHTRA | 400050 | tushar@mail  |
 +---------+---------+-----------+--------+-------------+--------+--------------+
 2 rows in set (0.00 sec)
+
+
+=====================================================================
+	UC 5 - Ability to DELETE CONTACTS from table
+=====================================================================
+
+mysql> DELETE FROM ADDRESSBOOK
+    -> WHERE FNAME = 'VAIBHAV';
+Query OK, 1 row affected (0.02 sec)
+
+mysql> SELECT * FROM ADDRESSBOOK;
++--------+--------+-----------+--------+-------------+--------+-------------+
+| FNAME  | LNAME  | ADDRESS   | CITY   | STATE       | ZIP    | EMAIL       |
++--------+--------+-----------+--------+-------------+--------+-------------+
+| TUSHAR | JADHAV | GHATKOPAR | MUMBAI | MAHARASHTRA | 400050 | tushar@mail |
++--------+--------+-----------+--------+-------------+--------+-------------+
+1 row in set (0.00 sec)
+
