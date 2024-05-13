@@ -19,3 +19,77 @@ mysql> SHOW DATABASES;
 | sys                 |
 +---------------------+
 6 rows in set (0.00 sec)
+
+=====================================================================
+	UC2 - Ability to create ADDRESSBOOK TABLE in database
+=====================================================================
+
+mysql> CREATE TABLE ADDRESSBOOK
+    -> (
+    -> FNAME VARCHAR(50),
+    -> LNAME VARCHAR(50),
+    -> ADDRESS VARCHAR(50),
+    -> CITY VARCHAR(50),
+    -> STATE VARCHAR(50),
+    -> ZIP INT,
+    -> EMAIL VARCHAR(50));
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> SHOW TABLES;
++-------------------------------+
+| Tables_in_addressbook_service |
++-------------------------------+
+| addressbook                   |
++-------------------------------+
+1 row in set (0.01 sec)
+
+mysql> desc addressbook;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| FNAME   | varchar(50) | YES  |     | NULL    |       |
+| LNAME   | varchar(50) | YES  |     | NULL    |       |
+| ADDRESS | varchar(50) | YES  |     | NULL    |       |
+| CITY    | varchar(50) | YES  |     | NULL    |       |
+| STATE   | varchar(50) | YES  |     | NULL    |       |
+| ZIP     | int         | YES  |     | NULL    |       |
+| EMAIL   | varchar(50) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+7 rows in set (0.02 sec)
+
+=====================================================================
+	UC 3 - Ability to INSERT CONTACTS into table
+=====================================================================
+
+mysql> INSERT INTO ADDRESSBOOK
+    -> VALUES ('VAIBHAV','KUMBHAR','CHEMBUR','MUMBAI','MAHARASHTRA',400071,'vaibhav@mail'),('TUSHAR','PATIL','GHATKOPAR','MUMBAI','MAHARASHTRA',400050,'tushar@mail');
+Query OK, 2 rows affected (0.03 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM ADDRESSBOOK;
++---------+---------+-----------+--------+-------------+--------+--------------+
+| FNAME   | LNAME   | ADDRESS   | CITY   | STATE       | ZIP    | EMAIL        |
++---------+---------+-----------+--------+-------------+--------+--------------+
+| VAIBHAV | KUMBHAR | CHEMBUR   | MUMBAI | MAHARASHTRA | 400071 | vaibhav@mail |
+| TUSHAR  | PATIL   | GHATKOPAR | MUMBAI | MAHARASHTRA | 400050 | tushar@mail  |
++---------+---------+-----------+--------+-------------+--------+--------------+
+2 rows in set (0.01 sec)
+
+=====================================================================
+	UC 4 - Ability to UPDATE CONTACTS into table
+=====================================================================
+
+mysql> UPDATE ADDRESSBOOK
+    -> SET LNAME = 'JADHAV'
+    -> WHERE FNAME = 'TUSHAR';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM ADDRESSBOOK;
++---------+---------+-----------+--------+-------------+--------+--------------+
+| FNAME   | LNAME   | ADDRESS   | CITY   | STATE       | ZIP    | EMAIL        |
++---------+---------+-----------+--------+-------------+--------+--------------+
+| VAIBHAV | KUMBHAR | CHEMBUR   | MUMBAI | MAHARASHTRA | 400071 | vaibhav@mail |
+| TUSHAR  | JADHAV  | GHATKOPAR | MUMBAI | MAHARASHTRA | 400050 | tushar@mail  |
++---------+---------+-----------+--------+-------------+--------+--------------+
+2 rows in set (0.00 sec)
