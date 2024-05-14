@@ -266,6 +266,122 @@ mysql> SELECT * FROM ADDRESSBOOK;
 +----------+------------+-----------+------------+-------------+-------+--------+-----------+----------------------------+
 10 rows in set (0.00 sec)
 
+
+
 ===========================================================
 	UC 12 - ER DIAGRAM
 ===========================================================
+
+
+
+===========================================================================================================================================
+	UC 13 - Ensure all retrieve queries done especially in UC 6, UC 7, UC 8 and UC 10 are working with new table structure
+===========================================================================================================================================
+
+
+===UC-6===
+
+
+mysql> SELECT * FROM ADDRESSBOOK
+    -> WHERE CITY = 'MUMBAI';
++----------+------------+-----------+--------+-------+--------+-----------+----------------------------+------------+
+| FNAME    | LNAME      | ADDRESS   | CITY   | STATE | ZIP    | PHONE     | EMAIL                      | TYPE       |
++----------+------------+-----------+--------+-------+--------+-----------+----------------------------+------------+
+| TUSHAR   | JADHAV     | GHATKOPAR | MUMBAI | MH    | 400050 |  98765678 | tushar@mail                | FRIEND     |
+| RAM      | LAKHAN     | GHATKOPAR | MUMBAI | MH    | 400050 | 987463678 | ghatkopar@mail             | PROFESSION |
+| Sanket   | Kalambaste | Dadar     | Mumbai | MH    | 400456 |  78974633 | sanketkalambaste@gmail.com | PROFESSION |
+| JAYESH   | KADAM      | CHEMBUR   | Mumbai | MH    | 400071 |  94854324 | jayeshpatil@gmail.com      | FAMILY     |
+| KALPESH  | KALE       | GOVANDI   | Mumbai | MH    | 400088 |   9438564 | kalpesh@gmail.com          | FAMILY     |
+| MOKUBHAI | KUMBHAR    | CHEMBUR   | MUMBAI | MH    | 400071 |   9876545 | ranjit@mail                | FAMILY     |
++----------+------------+-----------+--------+-------+--------+-----------+----------------------------+------------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ADDRESSBOOK
+    -> WHERE CITY = 'NAVI MUMBAI';
++--------+--------+----------+-------------+-------+--------+-----------+------------------------+--------+
+| FNAME  | LNAME  | ADDRESS  | CITY        | STATE | ZIP    | PHONE     | EMAIL                  | TYPE   |
++--------+--------+----------+-------------+-------+--------+-----------+------------------------+--------+
+| Anjali | Patil  | Ghansoli | Navi Mumbai | MH    | 500789 | 987463324 | anjalipatil@gmail.com  | FRIEND |
+| Pratik | Sawant | Vashi    | Navi Mumbai | MH    | 500245 |  94263324 | pratiksawant@gmail.com | FRIEND |
++--------+--------+----------+-------------+-------+--------+-----------+------------------------+--------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ADDRESSBOOK
+    -> WHERE CITY = 'PUNE';
++--------+---------+---------+------+-------+--------+--------+-----------------+--------+
+| FNAME  | LNAME   | ADDRESS | CITY | STATE | ZIP    | PHONE  | EMAIL           | TYPE   |
++--------+---------+---------+------+-------+--------+--------+-----------------+--------+
+| BHAIYA | KUMBHAR | WAKAD   | PUNE | MH    | 359322 | 946573 | bhaiya@mail.com | FRIEND |
+| BHAIYA | KUMBHAR | WAKAD   | PUNE | MH    | 359322 | 946573 | bhaiya@mail.com | FAMILY |
++--------+---------+---------+------+-------+--------+--------+-----------------+--------+
+2 rows in set (0.00 sec)
+-------------------------------------------------------------------
+
+===UC-7===
+
+
+mysql> SELECT COUNT(*)
+    -> FROM ADDRESSBOOK
+    -> WHERE CITY = 'MUMBAI';
++----------+
+| COUNT(*) |
++----------+
+|        6 |
++----------+
+1 row in set (0.01 sec)
+
+mysql> SELECT COUNT(*)
+    -> FROM ADDRESSBOOK
+    -> WHERE CITY = 'NAVI MUMBAI';
++----------+
+| COUNT(*) |
++----------+
+|        2 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT(*)
+    -> FROM ADDRESSBOOK
+    -> WHERE CITY = 'PUNE';
++----------+
+| COUNT(*) |
++----------+
+|        2 |
++----------+
+1 row in set (0.00 sec)
+
+-------------------------------------------------------------------
+
+===UC-8===
+
+mysql> SELECT * FROM ADDRESSBOOK
+    -> WHERE CITY = 'MUMBAI'
+    -> ORDER BY FNAME;
++----------+------------+-----------+--------+-------+--------+-----------+----------------------------+------------+
+| FNAME    | LNAME      | ADDRESS   | CITY   | STATE | ZIP    | PHONE     | EMAIL                      | TYPE       |
++----------+------------+-----------+--------+-------+--------+-----------+----------------------------+------------+
+| JAYESH   | KADAM      | CHEMBUR   | Mumbai | MH    | 400071 |  94854324 | jayeshpatil@gmail.com      | FAMILY     |
+| KALPESH  | KALE       | GOVANDI   | Mumbai | MH    | 400088 |   9438564 | kalpesh@gmail.com          | FAMILY     |
+| MOKUBHAI | KUMBHAR    | CHEMBUR   | MUMBAI | MH    | 400071 |   9876545 | ranjit@mail                | FAMILY     |
+| RAM      | LAKHAN     | GHATKOPAR | MUMBAI | MH    | 400050 | 987463678 | ghatkopar@mail             | PROFESSION |
+| Sanket   | Kalambaste | Dadar     | Mumbai | MH    | 400456 |  78974633 | sanketkalambaste@gmail.com | PROFESSION |
+| TUSHAR   | JADHAV     | GHATKOPAR | MUMBAI | MH    | 400050 |  98765678 | tushar@mail                | FRIEND     |
++----------+------------+-----------+--------+-------+--------+-----------+----------------------------+------------+
+6 rows in set (0.00 sec)
+
+
+-------------------------------------------------------------------
+
+===UC-10===
+
+mysql> SELECT TYPE, COUNT(*)
+    -> FROM ADDRESSBOOK
+    -> GROUP BY TYPE;
++------------+----------+
+| TYPE       | COUNT(*) |
++------------+----------+
+| FAMILY     |        4 |
+| FRIEND     |        4 |
+| PROFESSION |        2 |
++------------+----------+
+3 rows in set (0.00 sec)
