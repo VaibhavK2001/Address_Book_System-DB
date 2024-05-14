@@ -161,3 +161,17 @@ mysql> SELECT COUNT(*)
 +----------+
 1 row in set (0.00 sec)
 
+=========================================================================================================
+	UC 8 - Ability to retrieve entries sorted alphabetically by Person’s name for a given city
+=========================================================================================================
+
+mysql> SELECT * FROM ADDRESSBOOK
+    -> WHERE CITY = 'MUMBAI'
+    -> ORDER BY FNAME;
++--------+--------+-----------+--------+-------------+--------+----------------+
+| FNAME  | LNAME  | ADDRESS   | CITY   | STATE       | ZIP    | EMAIL          |
++--------+--------+-----------+--------+-------------+--------+----------------+
+| RAM    | LAKHAN | GHATKOPAR | MUMBAI | MAHARASHTRA | 400050 | ghatkopar@mail |
+| TUSHAR | JADHAV | GHATKOPAR | MUMBAI | MAHARASHTRA | 400050 | tushar@mail    |
++--------+--------+-----------+--------+-------------+--------+----------------+
+2 rows in set (0.01 sec)
