@@ -138,7 +138,7 @@ mysql> SELECT * FROM ADDRESSBOOK
 
 
 ======================================================================================
-	UC 6 - Ability to COUNT of address book by City and State
+	UC 7 - Ability to COUNT of address book by City and State
 ======================================================================================
 
 mysql> SELECT COUNT(*)
@@ -160,3 +160,4 @@ mysql> SELECT COUNT(*)
 |        2 |
 +----------+
 1 row in set (0.00 sec)
+
