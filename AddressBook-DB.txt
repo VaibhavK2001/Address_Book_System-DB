@@ -175,3 +175,45 @@ mysql> SELECT * FROM ADDRESSBOOK
 | TUSHAR | JADHAV | GHATKOPAR | MUMBAI | MAHARASHTRA | 400050 | tushar@mail    |
 +--------+--------+-----------+--------+-------------+--------+----------------+
 2 rows in set (0.01 sec)
+
+
+======================================================================================
+	UC 9 - Ability to identify each Address Book with name and type
+======================================================================================
+
+mysql> ALTER TABLE ADDRESSBOOK
+    -> ADD TYPE VARCHAR(50) AFTER ADDRESS;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> UPDATE ADDRESSBOOK
+    -> SET TYPE = 'FRIENDS'
+    -> WHERE FNAME IN ('TUSHAR','ANJALI','PRATIK');
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 3  Changed: 1  Warnings: 0
+
+mysql> UPDATE ADDRESSBOOK
+    -> SET TYPE = 'FAMILY'
+    -> WHERE FNAME IN ('KALPESH','JAYESH');
+Query OK, 2 rows affected (0.02 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> UPDATE ADDRESSBOOK
+    -> SET TYPE = 'PROFESSION'
+    -> WHERE FNAME IN ('RAM','SANKET');
+Query OK, 2 rows affected (0.04 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> SELECT * FROM ADDRESSBOOK;
++---------+------------+-----------+------------+-------------+-------+--------+-----------+----------------------------+
+| FNAME   | LNAME      | ADDRESS   | TYPE       | CITY        | STATE | ZIP    | PHONE     | EMAIL                      |
++---------+------------+-----------+------------+-------------+-------+--------+-----------+----------------------------+
+| TUSHAR  | JADHAV     | GHATKOPAR | FRIENDS    | MUMBAI      | MH    | 400050 |  98765678 | tushar@mail                |
+| RAM     | LAKHAN     | GHATKOPAR | PROFESSION | MUMBAI      | MH    | 400050 | 987463678 | ghatkopar@mail             |
+| Anjali  | Patil      | Ghansoli  | FRIENDS    | Navi Mumbai | MH    | 500789 | 987463324 | anjalipatil@gmail.com      |
+| Sanket  | Kalambaste | Dadar     | PROFESSION | Mumbai      | MH    | 400456 |  78974633 | sanketkalambaste@gmail.com |
+| Pratik  | Sawant     | Vashi     | FRIENDS    | Navi Mumbai | MH    | 500245 |  94263324 | pratiksawant@gmail.com     |
+| JAYESH  | KADAM      | CHEMBUR   | FAMILY     | Mumbai      | MH    | 400071 |  94854324 | jayeshpatil@gmail.com      |
+| KALPESH | KALE       | GOVANDI   | FAMILY     | Mumbai      | MH    | 400088 |   9438564 | kalpesh@gmail.com          |
++---------+------------+-----------+------------+-------------+-------+--------+-----------+----------------------------+
+7 rows in set (0.00 sec)
