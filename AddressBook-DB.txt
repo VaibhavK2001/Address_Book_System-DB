@@ -221,7 +221,7 @@ mysql> SELECT * FROM ADDRESSBOOK;
 
 
 ======================================================================================
-	UC 9 - Ability to get number of contact persons i.e. count by type
+	UC 10 - Ability to get number of contact persons i.e. count by type
 ======================================================================================
 
 mysql> SELECT TYPE, COUNT(*)
@@ -235,3 +235,33 @@ mysql> SELECT TYPE, COUNT(*)
 | FAMILY     |        2 |
 +------------+----------+
 3 rows in set (0.00 sec)
+
+
+======================================================================================
+	UC 11 - Ability to add person to both Friend and Family
+======================================================================================
+
+mysql> INSERT INTO ADDRESSBOOK
+    -> VALUES('BHAIYA','KUMBHAR','WAKAD','FRIEND','PUNE','MH',400071,9876545,'bhaiya@mail');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO ADDRESSBOOK
+    -> VALUES('BHAIYA','KUMBHAR','WAKAD','FAMILY','PUNE','MH',400071,9876545,'bhaiya@mail');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> SELECT * FROM ADDRESSBOOK;
++----------+------------+-----------+------------+-------------+-------+--------+-----------+----------------------------+
+| FNAME    | LNAME      | ADDRESS   | TYPE       | CITY        | STATE | ZIP    | PHONE     | EMAIL                      |
++----------+------------+-----------+------------+-------------+-------+--------+-----------+----------------------------+
+| TUSHAR   | JADHAV     | GHATKOPAR | FRIENDS    | MUMBAI      | MH    | 400050 |  98765678 | tushar@mail                |
+| RAM      | LAKHAN     | GHATKOPAR | PROFESSION | MUMBAI      | MH    | 400050 | 987463678 | ghatkopar@mail             |
+| Anjali   | Patil      | Ghansoli  | FRIENDS    | Navi Mumbai | MH    | 500789 | 987463324 | anjalipatil@gmail.com      |
+| Sanket   | Kalambaste | Dadar     | PROFESSION | Mumbai      | MH    | 400456 |  78974633 | sanketkalambaste@gmail.com |
+| Pratik   | Sawant     | Vashi     | FRIENDS    | Navi Mumbai | MH    | 500245 |  94263324 | pratiksawant@gmail.com     |
+| JAYESH   | KADAM      | CHEMBUR   | FAMILY     | Mumbai      | MH    | 400071 |  94854324 | jayeshpatil@gmail.com      |
+| KALPESH  | KALE       | GOVANDI   | FAMILY     | Mumbai      | MH    | 400088 |   9438564 | kalpesh@gmail.com          |
+| MOKUBHAI | KUMBHAR    | CHEMBUR   | FAMILY     | MUMBAI      | MH    | 400071 |   9876545 | ranjit@mail                |
+| BHAIYA   | KUMBHAR    | WAKAD     | FRIEND     | PUNE        | MH    | 400071 |   9876545 | bhaiya@mail                |
+| BHAIYA   | KUMBHAR    | WAKAD     | FAMILY     | PUNE        | MH    | 400071 |   9876545 | bhaiya@mail                |
++----------+------------+-----------+------------+-------------+-------+--------+-----------+----------------------------+
+10 rows in set (0.00 sec)
